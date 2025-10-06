@@ -48,9 +48,11 @@
 ### **On Server** (`~/dbt/`)
 
 1. **Setup Script:**
+
    - `setup-production-complete.sh` - Automated configuration
 
 2. **Data Files** (`~/dbt/data/processed/`):
+
    - `nyc_education_analyzed.csv` (61 KB)
    - `top_50_nyc_schools.csv` (7.7 KB)
    - `borough_summary.csv` (588 B)
@@ -60,6 +62,7 @@
    - `model_comparison.csv` (390 B)
 
 3. **Verification Notebook:**
+
    - `notebooks/production_verification.ipynb` - Test environment
 
 4. **Automation Scripts:**
@@ -146,11 +149,11 @@ Once you complete the 3 steps above, you'll have:
 
 ### **Service URLs**
 
-| Service | URL | Credentials |
-|---------|-----|-------------|
-| Jupyter Lab | <http://159.203.140.78:8888> | Password (set in setup) |
-| Adminer | <http://159.203.140.78:8080> | User: andernet, Pass: LocalTestPassword123! |
-| SSH | `ssh dbtuser@159.203.140.78` | Your dbtuser password |
+| Service     | URL                          | Credentials                                 |
+| ----------- | ---------------------------- | ------------------------------------------- |
+| Jupyter Lab | <http://159.203.140.78:8888> | Password (set in setup)                     |
+| Adminer     | <http://159.203.140.78:8080> | User: andernet, Pass: LocalTestPassword123! |
+| SSH         | `ssh dbtuser@159.203.140.78` | Your dbtuser password                       |
 
 ### **Common Commands**
 

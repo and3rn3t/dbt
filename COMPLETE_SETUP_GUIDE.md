@@ -334,14 +334,15 @@ models:
         tests:
           - not_null
           - unique
-      
+
       - name: borough
         description: NYC borough
         tests:
           - not_null
           - accepted_values:
-              values: ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island']
-      
+              values:
+                ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"]
+
       - name: graduation_rate
         description: Graduation rate (0-100)
         tests:

@@ -62,11 +62,11 @@ See the **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** for:
 
 ## 🔗 Quick Access
 
-| Service | URL | Notes |
-|---------|-----|-------|
-| **Jupyter Lab** | <http://159.203.140.78:8888> | Password required |
+| Service             | URL                          | Notes              |
+| ------------------- | ---------------------------- | ------------------ |
+| **Jupyter Lab**     | <http://159.203.140.78:8888> | Password required  |
 | **Adminer (DB UI)** | <http://159.203.140.78:8080> | Username: andernet |
-| **SSH Access** | `ssh dbtuser@159.203.140.78` | Server access |
+| **SSH Access**      | `ssh dbtuser@159.203.140.78` | Server access      |
 
 ---
 
