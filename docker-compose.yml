@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: dbt_postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-dbt_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+      POSTGRES_DB: ${DB_NAME:-dbt_analytics}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    networks:
+      - dbt_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-dbt_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # dbt Service
+  dbt:
+    build: .
+    container_name: dbt_analytics
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-dbt_user}
+      DB_PASSWORD: ${DB_PASSWORD:-changeme}
+      DB_NAME: ${DB_NAME:-dbt_analytics}
+      DBT_PROFILES_DIR: /app/dbt_project
+    volumes:
+      - ./dbt_project:/app/dbt_project
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - dbt_target:/app/dbt_project/target
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - dbt_network
+    restart: unless-stopped
+    # Override command to keep container running
+    command: tail -f /dev/null
+
+  # Optional: Jupyter Lab for analysis
+  jupyter:
+    build: .
+    container_name: dbt_jupyter
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-dbt_user}
+      DB_PASSWORD: ${DB_PASSWORD:-changeme}
+      DB_NAME: ${DB_NAME:-dbt_analytics}
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./scripts:/app/scripts
+    ports:
+      - "${JUPYTER_PORT:-8888}:8888"
+    depends_on:
+      - postgres
+    networks:
+      - dbt_network
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    restart: unless-stopped
+
+  # Optional: Adminer (Database Management UI)
+  adminer:
+    image: adminer:latest
+    container_name: dbt_adminer
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+    depends_on:
+      - postgres
+    networks:
+      - dbt_network
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+volumes:
+  postgres_data:
+    driver: local
+  dbt_target:
+    driver: local
+
+networks:
+  dbt_network:
+    driver: bridge
