@@ -16,7 +16,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Check if running as root
-if [ "$EUID" -eq 0 ]; then 
+if [ "$EUID" -eq 0 ]; then
    echo -e "${RED}❌ Please do not run as root. Run as regular user with sudo access.${NC}"
    exit 1
 fi
@@ -49,7 +49,7 @@ else
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
     rm get-docker.sh
-    
+
     # Add current user to docker group
     sudo usermod -aG docker $USER
     echo -e "${GREEN}✅ Docker installed${NC}"

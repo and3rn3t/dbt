@@ -32,6 +32,7 @@ chmod +x deploy-production.sh
 ```
 
 The script will:
+
 - ✅ Update system
 - ✅ Install Docker
 - ✅ Configure firewall
@@ -172,15 +173,18 @@ sudo chown $USER:$USER /var/log/dbt
 ## Access Your Services
 
 Get your server IP:
+
 ```bash
 hostname -I | awk '{print $1}'
 ```
 
 Then access:
+
 - **Jupyter Lab:** `http://YOUR_SERVER_IP:8888`
 - **Adminer:** `http://YOUR_SERVER_IP:8080`
 
-### Adminer Login:
+### Adminer Login
+
 - Server: `postgres`
 - Username: `dbt_user` (or your configured user)
 - Password: (from your .env file)
@@ -201,6 +205,7 @@ Edit `docker-compose.yml` and comment out the adminer service:
 ```
 
 Then restart:
+
 ```bash
 docker compose down
 docker compose up -d
@@ -387,10 +392,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'
+          cpus: "2"
           memory: 4G
         reservations:
-          cpus: '1'
+          cpus: "1"
           memory: 2G
 ```
 

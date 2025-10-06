@@ -1,4 +1,4 @@
-# 🐳 Docker Deployment Package - READY TO GO!
+# 🐳 Docker Deployment Package - READY TO GO
 
 **Created:** October 6, 2025  
 **Target:** Ubuntu Server with Docker  
@@ -129,6 +129,7 @@ docker compose exec dbt dbt run
 ## 🎯 Key Features
 
 ### Security
+
 - ✅ Isolated network for containers
 - ✅ PostgreSQL not exposed to internet
 - ✅ Environment variable based configuration
@@ -136,18 +137,21 @@ docker compose exec dbt dbt run
 - ✅ Health checks for all services
 
 ### Automation
+
 - ✅ Automated backups with retention
 - ✅ Cron-ready scripts
 - ✅ Log rotation
 - ✅ Auto-restart on failure
 
 ### Developer Experience
+
 - ✅ Makefile for easy commands
 - ✅ Jupyter Lab for interactive analysis
 - ✅ Adminer for database management
 - ✅ Hot-reload volumes (no rebuild needed)
 
 ### Production Ready
+
 - ✅ Separate dev/prod targets
 - ✅ Resource limits configurable
 - ✅ Monitoring ready
@@ -188,13 +192,15 @@ docker compose exec dbt dbt run
 
 ## 🔒 Security Notes
 
-### What's Secure:
+### What's Secure
+
 - PostgreSQL only accessible within Docker network
 - Passwords stored in `.env` (gitignored)
 - File permissions enforced
 - Health checks prevent unauthorized access
 
-### What You Should Do:
+### What You Should Do
+
 1. Change ALL default passwords in `.env`
 2. Set up firewall: `sudo ufw enable`
 3. Use SSH keys, not passwords
@@ -206,17 +212,20 @@ docker compose exec dbt dbt run
 
 ## 📈 Scaling Options
 
-### Horizontal Scaling:
+### Horizontal Scaling
+
 - Separate database to dedicated server
 - Multiple dbt workers with Docker Swarm
 - Load balancer for Jupyter instances
 
-### Vertical Scaling:
+### Vertical Scaling
+
 - Increase container resources in `docker-compose.yml`
 - Add more CPU/RAM to server
 - Use SSD for database volume
 
-### Cloud Deployment:
+### Cloud Deployment
+
 - AWS ECS/Fargate
 - Google Cloud Run
 - Azure Container Instances
@@ -253,20 +262,23 @@ make clean-all            # Remove everything (WARNING)
 
 ## 📞 Next Steps
 
-### Before Deployment:
+### Before Deployment
+
 1. Read `docs/DOCKER_DEPLOYMENT.md` (detailed guide)
 2. Review `DEPLOYMENT_CHECKLIST.md` (don't skip steps!)
 3. Test locally if possible (Docker Desktop on Windows)
 4. Prepare rollback plan
 
-### First Week After Deployment:
+### First Week After Deployment
+
 1. Monitor logs daily
 2. Verify backups are working
 3. Test restore procedure
 4. Document any issues
 5. Establish baseline metrics
 
-### Ongoing:
+### Ongoing
+
 1. Weekly backup tests
 2. Monthly security updates
 3. Quarterly capacity review
@@ -301,6 +313,7 @@ make clean-all            # Remove everything (WARNING)
 **Everything you need is ready!**
 
 1. **Commit these files:**
+
    ```bash
    git add .
    git commit -m "Add Docker deployment configuration"
@@ -322,6 +335,7 @@ make clean-all            # Remove everything (WARNING)
 **Good luck with your deployment! 🚀**
 
 The setup is designed to be:
+
 - ✅ Simple to deploy
 - ✅ Easy to maintain
 - ✅ Secure by default

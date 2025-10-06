@@ -94,6 +94,7 @@ nano .env
 ```
 
 **Edit the `.env` file:**
+
 ```bash
 DB_USER=dbt_user
 DB_PASSWORD=YourSecurePasswordHere123!
@@ -104,6 +105,7 @@ ADMINER_PORT=8080
 ```
 
 **Secure the file:**
+
 ```bash
 chmod 600 .env
 ```
@@ -125,10 +127,11 @@ docker compose ps
 ```
 
 **Expected output:**
+
 ```
 NAME              IMAGE            STATUS         PORTS
 dbt_postgres      postgres:15      Up (healthy)   0.0.0.0:5432->5432/tcp
-dbt_analytics     dbt:latest       Up             
+dbt_analytics     dbt:latest       Up
 dbt_jupyter       dbt:latest       Up             0.0.0.0:8888->8888/tcp
 dbt_adminer       adminer:latest   Up             0.0.0.0:8080->8080/tcp
 ```
@@ -171,10 +174,12 @@ docker compose exec dbt dbt docs generate
 ### 3. Access Services
 
 **Jupyter Lab:**
+
 - URL: `http://your-server-ip:8888`
 - No password required (for development)
 
 **Adminer (Database UI):**
+
 - URL: `http://your-server-ip:8080`
 - System: `PostgreSQL`
 - Server: `postgres`
@@ -486,16 +491,17 @@ docker compose exec dbt dbt run --target prod
 ### 2. Resource Limits
 
 Add to `docker-compose.yml`:
+
 ```yaml
 services:
   dbt:
     deploy:
       resources:
         limits:
-          cpus: '2'
+          cpus: "2"
           memory: 4G
         reservations:
-          cpus: '1'
+          cpus: "1"
           memory: 2G
 ```
 
@@ -521,6 +527,7 @@ docker run -d \
 - **Full restart:** `docker compose down && docker compose up -d`
 
 **Your services are accessible at:**
+
 - Jupyter Lab: http://your-server-ip:8888
 - Adminer: http://your-server-ip:8080
 - PostgreSQL: localhost:5432 (inside containers)
