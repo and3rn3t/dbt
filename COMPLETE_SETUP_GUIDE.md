@@ -42,6 +42,7 @@ cd ~/dbt
 ### **Step 3: Run the Complete Setup Script**
 
 This script will:
+
 - Set Jupyter password
 - Verify data files
 - Configure backup scripts
@@ -54,6 +55,7 @@ chmod +x setup-production-complete.sh
 ```
 
 **Follow the prompts:**
+
 1. Enter a password for Jupyter Lab (use something secure!)
 2. Re-enter the password to confirm
 3. Review the output to verify all steps completed
@@ -67,6 +69,7 @@ docker compose ps
 ```
 
 You should see:
+
 - ✅ `dbt_postgres` - healthy
 - ✅ `dbt_analytics` - healthy
 - ✅ `dbt_jupyter` - healthy
@@ -76,12 +79,13 @@ You should see:
 
 ### **Step 5: Test Jupyter Lab**
 
-1. **Open in browser:** http://159.203.140.78:8888
+1. **Open in browser:** <http://159.203.140.78:8888>
 2. **Enter the password** you just set
 3. **Open the verification notebook:** `notebooks/production_verification.ipynb`
 4. **Run all cells** (Cell → Run All)
 
 The notebook will test:
+
 - Python environment
 - Database connection
 - Data files
@@ -105,12 +109,14 @@ After setup completion, verify:
 ## 📊 Access Your Services
 
 ### **Jupyter Lab**
-- **URL:** http://159.203.140.78:8888
+
+- **URL:** <http://159.203.140.78:8888>
 - **Use:** Data analysis, notebooks
 - **Password:** ✅ Set during setup
 
 ### **Adminer** (Database UI)
-- **URL:** http://159.203.140.78:8080
+
+- **URL:** <http://159.203.140.78:8080>
 - **System:** PostgreSQL
 - **Server:** postgres
 - **Username:** andernet
@@ -118,6 +124,7 @@ After setup completion, verify:
 - **Database:** dbt_analytics
 
 ### **SSH Access**
+
 ```bash
 ssh dbtuser@159.203.140.78
 ```
@@ -143,6 +150,7 @@ The following files are now on the server in `~/dbt/data/processed/`:
 After running the setup script, these tasks run automatically:
 
 ### **Daily Backups** (00:00 UTC)
+
 - Dumps PostgreSQL database
 - Compresses with gzip
 - Stores in `~/dbt/backups/`
@@ -150,12 +158,14 @@ After running the setup script, these tasks run automatically:
 - Runs: `/home/dbtuser/dbt/backup-db.sh`
 
 ### **Daily dbt Runs** (02:00 UTC)
+
 - Runs dbt transformations
 - Logs to `~/dbt/logs/`
 - Keeps 30 days of logs
 - Runs: `/home/dbtuser/dbt/scripts/run-dbt.sh run`
 
 ### **View Scheduled Jobs**
+
 ```bash
 crontab -l
 ```
@@ -461,12 +471,14 @@ rm ~/dbt/backups/*.sql.gz.old
 ## 📖 Additional Resources
 
 ### **Documentation**
-- dbt: https://docs.getdbt.com/
-- PostgreSQL: https://www.postgresql.org/docs/
-- Docker: https://docs.docker.com/
-- Jupyter: https://jupyter.org/documentation
+
+- dbt: <https://docs.getdbt.com/>
+- PostgreSQL: <https://www.postgresql.org/docs/>
+- Docker: <https://docs.docker.com/>
+- Jupyter: <https://jupyter.org/documentation>
 
 ### **Project Files**
+
 - `/home/dbtuser/dbt/` - Project root
 - `/home/dbtuser/dbt/dbt_project/` - dbt models
 - `/home/dbtuser/dbt/data/` - Data files
@@ -493,7 +505,7 @@ Before proceeding with development, verify:
 
 ---
 
-## 🎉 You're Ready!
+## 🎉 You're Ready
 
 Once the setup script completes and all services are verified, you're ready to:
 
@@ -507,12 +519,14 @@ Once the setup script completes and all services are verified, you're ready to:
 **Questions or Issues?**
 
 Review the logs:
+
 ```bash
 docker compose logs -f
 tail -f ~/dbt/logs/dbt_run.log
 ```
 
 Check service status:
+
 ```bash
 docker compose ps
 ```

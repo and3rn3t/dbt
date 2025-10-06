@@ -9,6 +9,7 @@
 ## 🎉 What We've Accomplished Today
 
 ### ✅ Phase 1: Infrastructure (DONE)
+
 - [x] Created DigitalOcean Ubuntu 22.04 droplet
 - [x] Installed Docker & Docker Compose
 - [x] Configured user account (dbtuser) with sudo
@@ -16,6 +17,7 @@
 - [x] Cloned GitHub repository to server
 
 ### ✅ Phase 2: Application Deployment (DONE)
+
 - [x] Built Docker images (Python 3.11, dbt, Jupyter)
 - [x] Deployed 4 services:
   - PostgreSQL 15 (database)
@@ -26,11 +28,13 @@
 - [x] Database initialized with schemas (staging, marts, seeds)
 
 ### ✅ Phase 3: Data Upload (DONE)
+
 - [x] Uploaded 7 CSV files (NYC education data)
 - [x] Files available in server: `~/dbt/data/processed/`
 - [x] Total data: ~70 MB
 
 ### ✅ Phase 4: Configuration Scripts (DONE)
+
 - [x] Created complete setup script
 - [x] Created verification notebook
 - [x] Created comprehensive guides
@@ -81,6 +85,7 @@ chmod +x setup-production-complete.sh
 ```
 
 This script will:
+
 1. ⏳ Set Jupyter Lab password (secure access)
 2. ⏳ Verify all data files are present
 3. ⏳ Make backup scripts executable
@@ -93,12 +98,13 @@ This script will:
 
 ### **Step 3: Verify Environment** ⏳
 
-1. Open browser: http://159.203.140.78:8888
+1. Open browser: <http://159.203.140.78:8888>
 2. Enter Jupyter password (set in Step 2)
 3. Open: `notebooks/production_verification.ipynb`
 4. Run all cells: **Cell → Run All**
 
 This verifies:
+
 - ✓ Python environment
 - ✓ Database connection
 - ✓ Data files accessible
@@ -114,18 +120,21 @@ This verifies:
 Once you complete the 3 steps above, you'll have:
 
 ### **🔒 Security**
+
 - ✅ Jupyter Lab password protected
 - ✅ Firewall active (UFW)
 - ✅ Only necessary ports open (22, 8888, 8080)
 - ✅ Secure .env file (permissions 600)
 
 ### **🤖 Automation**
+
 - ✅ Daily backups at 00:00 UTC
 - ✅ Daily dbt runs at 02:00 UTC
 - ✅ 7-day backup retention
 - ✅ 30-day log retention
 
 ### **📊 Data Platform**
+
 - ✅ Jupyter Lab for analysis
 - ✅ PostgreSQL with NYC education data
 - ✅ dbt for transformations
@@ -139,8 +148,8 @@ Once you complete the 3 steps above, you'll have:
 
 | Service | URL | Credentials |
 |---------|-----|-------------|
-| Jupyter Lab | http://159.203.140.78:8888 | Password (set in setup) |
-| Adminer | http://159.203.140.78:8080 | User: andernet, Pass: LocalTestPassword123! |
+| Jupyter Lab | <http://159.203.140.78:8888> | Password (set in setup) |
+| Adminer | <http://159.203.140.78:8080> | User: andernet, Pass: LocalTestPassword123! |
 | SSH | `ssh dbtuser@159.203.140.78` | Your dbtuser password |
 
 ### **Common Commands**
@@ -195,12 +204,14 @@ docker compose restart
 Once the environment is verified, you can:
 
 ### **1. Explore Data in Jupyter**
+
 - Open Jupyter Lab
 - Load and analyze CSV files
 - Create new analysis notebooks
 - Build visualizations
 
 ### **2. Create dbt Models**
+
 - **Staging models:** Clean and standardize raw data
 - **Marts models:** Business logic and aggregations
 - **Tests:** Data quality validation
@@ -208,12 +219,14 @@ Once the environment is verified, you can:
 Example: `dbt_project/models/staging/stg_nyc_schools.sql`
 
 ### **3. Run Transformations**
+
 ```bash
 docker compose exec dbt dbt run
 docker compose exec dbt dbt test
 ```
 
 ### **4. Schedule Analysis**
+
 - Add custom cron jobs
 - Build automated reports
 - Set up data pipelines
@@ -252,29 +265,34 @@ Your deployment is successful when:
 ### **Common Issues**
 
 **Can't SSH to server?**
+
 - Check your internet connection
 - Verify server IP: 159.203.140.78
 - Ensure you're using correct password
 
 **Jupyter Lab not loading?**
+
 ```bash
 docker compose restart jupyter
 docker compose logs jupyter
 ```
 
 **Database connection error?**
+
 ```bash
 docker compose exec dbt dbt debug
 docker compose logs postgres
 ```
 
 **Services not running?**
+
 ```bash
 docker compose ps
 docker compose up -d
 ```
 
 ### **View Logs**
+
 ```bash
 # All services
 docker compose logs -f
@@ -290,6 +308,7 @@ docker compose logs -f postgres
 ## 🎯 Your Mission (If You Choose to Accept It)
 
 ### **Right Now:**
+
 1. SSH to server
 2. Run setup script
 3. Verify in Jupyter
@@ -297,6 +316,7 @@ docker compose logs -f postgres
 **Time required:** ~5 minutes total
 
 ### **After That:**
+
 - Explore the data
 - Create dbt models
 - Build analysis notebooks
@@ -337,9 +357,10 @@ docker compose logs -f postgres
 
 ---
 
-## 🎉 Congratulations!
+## 🎉 Congratulations
 
 You've successfully:
+
 1. ✅ Deployed a production data analytics platform
 2. ✅ Set up Docker containerized services
 3. ✅ Uploaded your NYC education dataset

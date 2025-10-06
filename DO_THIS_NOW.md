@@ -25,6 +25,7 @@ chmod +x setup-production-complete.sh
 ```
 
 **When prompted:**
+
 1. Enter a secure password for Jupyter Lab
 2. Re-enter the password to confirm
 3. Wait for all steps to complete (~1 minute)
@@ -34,14 +35,14 @@ chmod +x setup-production-complete.sh
 ## Step 3: Open Jupyter Lab
 
 1. Open your browser
-2. Go to: http://159.203.140.78:8888
+2. Go to: <http://159.203.140.78:8888>
 3. Enter the password you just set
 4. Open: `notebooks/production_verification.ipynb`
 5. Click: **Cell → Run All**
 
 ---
 
-## ✅ That's It!
+## ✅ That's It
 
 If the verification notebook runs successfully, you're all set! 🎉
 
@@ -50,6 +51,7 @@ If the verification notebook runs successfully, you're all set! 🎉
 ## 📚 What's Next?
 
 See the **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** for:
+
 - dbt model development
 - Database queries
 - Automated tasks
@@ -62,8 +64,8 @@ See the **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** for:
 
 | Service | URL | Notes |
 |---------|-----|-------|
-| **Jupyter Lab** | http://159.203.140.78:8888 | Password required |
-| **Adminer (DB UI)** | http://159.203.140.78:8080 | Username: andernet |
+| **Jupyter Lab** | <http://159.203.140.78:8888> | Password required |
+| **Adminer (DB UI)** | <http://159.203.140.78:8080> | Username: andernet |
 | **SSH Access** | `ssh dbtuser@159.203.140.78` | Server access |
 
 ---
