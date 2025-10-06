@@ -1,0 +1,43 @@
+# dbt Project Configuration
+name: "dbt_analytics"
+version: "1.0.0"
+config-version: 2
+
+# Project profile (matches profiles.yml)
+profile: "dbt_analytics"
+
+# Directories
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Model configurations
+models:
+  dbt_analytics:
+    # Staging models
+    staging:
+      +materialized: view
+      +schema: staging
+
+    # Marts models
+    marts:
+      +materialized: table
+      +schema: marts
+
+# Seeds configuration
+seeds:
+  dbt_analytics:
+    +schema: seeds
+
+# Test configurations
+tests:
+  dbt_analytics:
+    +store_failures: true

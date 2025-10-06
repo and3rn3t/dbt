@@ -1,0 +1,69 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Python files
+*.py text eol=lf
+*.pyx text eol=lf
+*.pyi text eol=lf
+
+# Jupyter Notebooks
+*.ipynb text eol=lf
+
+# SQL files
+*.sql text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+*.jsonc text eol=lf
+
+# Markdown files
+*.md text eol=lf
+*.markdown text eol=lf
+
+# CSV files - treat as binary to avoid line ending issues
+*.csv binary
+*.tsv binary
+
+# Data files - treat as binary
+*.parquet binary
+*.pkl binary
+*.pickle binary
+*.h5 binary
+*.hdf5 binary
+*.xlsx binary
+*.xls binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+*.tgz binary
+*.bz2 binary
+
+# Documents
+*.pdf binary
+
+# Version control diff settings
+*.ipynb diff=jupyternotebook
+*.ipynb merge=jupyternotebook
+
+# Linguist overrides for GitHub language statistics
+*.ipynb linguist-documentation
+*.sql linguist-detectable=true
+*.md linguist-detectable=false

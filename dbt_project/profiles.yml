@@ -1,0 +1,29 @@
+# dbt Connection Profile
+# Place this in ~/.dbt/profiles.yml or specify with DBT_PROFILES_DIR
+
+dbt_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DB_HOST', 'localhost') }}"
+      port: "{{ env_var('DB_PORT', 5432) | int }}"
+      user: "{{ env_var('DB_USER', 'your_username') }}"
+      password: "{{ env_var('DB_PASSWORD', 'your_password') }}"
+      dbname: "{{ env_var('DB_NAME', 'your_database') }}"
+      schema: public
+      threads: 4
+      keepalives_idle: 0
+      connect_timeout: 10
+
+    prod:
+      type: postgres
+      host: "{{ env_var('DB_HOST_PROD', 'prod-server') }}"
+      port: "{{ env_var('DB_PORT', 5432) | int }}"
+      user: "{{ env_var('DB_USER_PROD') }}"
+      password: "{{ env_var('DB_PASSWORD_PROD') }}"
+      dbname: "{{ env_var('DB_NAME_PROD') }}"
+      schema: public
+      threads: 8
+      keepalives_idle: 0
+      connect_timeout: 10
