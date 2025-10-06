@@ -70,27 +70,33 @@ chmod +x deploy-production.sh
 The script will:
 
 1. **Update system** ⏱️ 2-3 minutes
+
    - Updates Ubuntu packages
    - Installs prerequisites
 
 2. **Install Docker** ⏱️ 2-3 minutes
+
    - Installs Docker Engine
    - Configures user permissions
 
 3. **Configure environment** ⏱️ 1-2 minutes
+
    - Opens `.env` file for editing
    - **⚠️ IMPORTANT:** Change all passwords here!
 
 4. **Set up firewall** ⏱️ 1 minute
+
    - Enables UFW
    - Opens necessary ports
 
 5. **Build Docker images** ⏱️ 5-10 minutes
+
    - Downloads Python base image
    - Installs all dependencies
    - Builds dbt service
 
 6. **Start services** ⏱️ 1-2 minutes
+
    - Starts PostgreSQL
    - Starts dbt
    - Starts Jupyter
@@ -130,6 +136,7 @@ ADMINER_PORT=8080
 ```
 
 **Security Rules:**
+
 - ✅ Use strong passwords (12+ characters)
 - ✅ Include uppercase, lowercase, numbers, symbols
 - ✅ Never use default passwords in production
@@ -154,11 +161,13 @@ ip addr show | grep "inet " | grep -v 127.0.0.1
 ### **Access Points:**
 
 **Jupyter Lab:**
+
 - URL: `http://YOUR_SERVER_IP:8888`
 - No password (set one later for security)
 - Full data science environment
 
 **Adminer (Database UI):**
+
 - URL: `http://YOUR_SERVER_IP:8080`
 - Server: `postgres`
 - Username: `dbt_user`
@@ -166,6 +175,7 @@ ip addr show | grep "inet " | grep -v 127.0.0.1
 - Database: `dbt_analytics`
 
 **PostgreSQL:**
+
 - Internal only (not exposed)
 - Host: `postgres` (from within containers)
 - Port: 5432 (internal)
@@ -411,12 +421,14 @@ Before going live:
 ## 📞 **Get Help**
 
 **Documentation:**
+
 - Full guide: `docs/DOCKER_DEPLOYMENT.md`
 - Checklist: `docs/DEPLOYMENT_CHECKLIST.md`
 - Quick ref: `QUICK_REFERENCE.md`
 - Production guide: `PRODUCTION_DEPLOY.md`
 
 **Support:**
+
 - Check logs: `docker compose logs`
 - Check status: `docker compose ps`
 - Test connection: `docker compose exec dbt dbt debug`
@@ -426,6 +438,7 @@ Before going live:
 ## 🎉 **You're Ready!**
 
 **Everything is prepared:**
+
 - ✅ Code pushed to GitHub
 - ✅ Deployment script ready
 - ✅ Documentation complete
@@ -448,6 +461,7 @@ chmod +x deploy-production.sh
 ```
 
 **Then access your services at:**
+
 - Jupyter: http://YOUR_IP:8888
 - Adminer: http://YOUR_IP:8080
 
