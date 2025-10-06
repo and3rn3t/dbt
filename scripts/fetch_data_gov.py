@@ -12,13 +12,18 @@ Examples:
     python fetch_data_gov.py erm2-nwe9              # NYC 311 Service Requests
 """
 
-import sys
-import os
 import argparse
-from sodapy import Socrata
-import pandas as pd
+import os
+import sys
 from datetime import datetime
 from pathlib import Path
+
+import pandas as pd
+from dotenv import load_dotenv
+from sodapy import Socrata
+
+# Load environment variables
+load_dotenv()
 
 
 def setup_directories():
@@ -48,8 +53,16 @@ def fetch_dataset(dataset_id, limit=10000, domain="data.cityofnewyork.us"):
     print(f"{'='*60}\n")
 
     try:
-        # Create client (no authentication needed for public datasets)
-        client = Socrata(domain, None)
+        # Get API token from environment (optional but recommended)
+        app_token = os.getenv("DATA_GOV_APP_TOKEN")
+        if app_token:
+            print(f"✓ Using API token for higher rate limits")
+        else:
+            print(f"⚠ No API token found - using public access (rate limited)")
+            print(f"  Add DATA_GOV_APP_TOKEN to .env for 10x faster access")
+
+        # Create client with token if available
+        client = Socrata(domain, app_token)
 
         # Fetch the data
         print("Downloading data...")
@@ -141,11 +154,11 @@ Examples (TESTED & WORKING):
   python fetch_data_gov.py kzjm-xkqj --domain data.seattle.gov              # Seattle Police
   python fetch_data_gov.py kzjm-xkqj --domain data.seattle.gov --limit 100  # Limit records
   python fetch_data_gov.py vbim-akqf --domain chronicdata.cdc.gov           # CDC COVID Data
-  
+
 Popular Dataset IDs (TESTED & WORKING):
   kzjm-xkqj  Seattle Police Reports (data.seattle.gov)
   vbim-akqf  CDC COVID-19 Data (chronicdata.cdc.gov)
-  
+
 Note: NYC Open Data may require API token or have connection issues
         """,
     )
