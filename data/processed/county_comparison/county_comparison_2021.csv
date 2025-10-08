@@ -1,0 +1,5 @@
+county,total_population,median_household_income,per_capita_income,poverty_rate_pct,unemployment_rate_pct,bachelor's_degree_or_higher_pct,median_home_value,median_gross_rent,median_age
+Scott County (Davenport/Bettendorf),174170.0,67675.0,38044.0,11.83,4.11,43.5,172100.0,852.0,38.7
+Linn County (Cedar Rapids),228567.0,70360.0,38106.0,9.569793354036712,3.9005262614797234,34.306324008480274,167000.0,824.0,37.9
+Black Hawk County (Waterloo),131396.0,57191.0,32579.0,14.969554517920242,5.159426856204338,29.52939910828482,155400.0,844.0,35.6
+Dubuque County (Dubuque),98687.0,68198.0,35816.0,9.30718213491164,4.059552605426488,32.097250624857985,183700.0,836.0,38.6
