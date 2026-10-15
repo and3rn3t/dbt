@@ -1,5 +1,5 @@
 # dbt Analytics Docker Image
-FROM python:3.11-slim
+FROM python:3.15-slim
 
 # Set metadata
 LABEL maintainer="and3rn3t"
